@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.samuraitravel.entity.Favorite;
 import com.example.samuraitravel.entity.House;
 import com.example.samuraitravel.entity.Review;
 import com.example.samuraitravel.entity.User;
@@ -22,6 +23,7 @@ import com.example.samuraitravel.repository.FavoriteRepository;
 import com.example.samuraitravel.repository.HouseRepository;
 import com.example.samuraitravel.repository.ReviewRepository;
 import com.example.samuraitravel.security.UserDetailsImpl;
+import com.example.samuraitravel.service.FavoriteService;
 import com.example.samuraitravel.service.ReviewService;
 
 @Controller
@@ -31,12 +33,14 @@ public class HouseController {
 	private final ReviewRepository reviewRepository;
 	private final ReviewService reviewService;
 	private final FavoriteRepository favoriteReposiotry;
+	private final FavoriteService favoriteService;
 
-	public HouseController(HouseRepository houseRepository, ReviewRepository reviewRepository, ReviewService reviewService, FavoriteRepository favoriteRepository) {
+	public HouseController(HouseRepository houseRepository, ReviewRepository reviewRepository, ReviewService reviewService, FavoriteRepository favoriteRepository, FavoriteService favoriteService) {
     this.houseRepository = houseRepository;      
     this.reviewRepository = reviewRepository;
     this.reviewService = reviewService;
     this.favoriteRepository = favoriteRepository;
+    this.favoriteService = favoriteService;
 	}   
   
     @GetMapping
@@ -112,7 +116,7 @@ public class HouseController {
         //お気に入り
         model.addAttribute("hassUserAlreadyLiked", hasUserAlreadyLiked);
         model.addAttribute("favoritePage", favoritePage);
-        model.addAttribute("")
+        model.addAttribute("");
         
         return "houses/show";
     }
