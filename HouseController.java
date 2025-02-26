@@ -97,7 +97,7 @@ public class HouseController {
         if (userDetailsImpl != null) {
             User user = userDetailsImpl.getUser();
             hasUserAlreadyReviewed = reviewService.hasUserAlreadyReviewed(house, user);
-            hasUserAlreadyLiked = favoriteService.hasUerAlreadyLiked(house, user);
+            hasUserAlreadyLiked = favoriteService.hasUserAlreadyLiked(house, user);
             
         }
         //レビュー
@@ -109,14 +109,15 @@ public class HouseController {
         
         model.addAttribute("house", house);  
         model.addAttribute("reservationInputForm", new ReservationInputForm());
+        
         //レビュー
         model.addAttribute("hasUserAlreadyReviewed", hasUserAlreadyReviewed);
         model.addAttribute("newReviews", newReviews);        
-        model.addAttribute("totalReviewCount", totalReviewCount);      
+        model.addAttribute("totalReviewCount", totalReviewCount);
+        
         //お気に入り
         model.addAttribute("hassUserAlreadyLiked", hasUserAlreadyLiked);
         model.addAttribute("favoritePage", favoritePage);
-        model.addAttribute("");
         
         return "houses/show";
     }
