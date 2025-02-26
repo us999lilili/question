@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.samuraitravel.entity.Favorite;
 import com.example.samuraitravel.entity.House;
 import com.example.samuraitravel.entity.Review;
 import com.example.samuraitravel.entity.User;
@@ -32,7 +31,7 @@ public class HouseController {
 	private final HouseRepository houseRepository;
 	private final ReviewRepository reviewRepository;
 	private final ReviewService reviewService;
-	private final FavoriteRepository favoriteReposiotry;
+	private final FavoriteRepository favoriteRepository;
 	private final FavoriteService favoriteService;
 
 	public HouseController(HouseRepository houseRepository, ReviewRepository reviewRepository, ReviewService reviewService, FavoriteRepository favoriteRepository, FavoriteService favoriteService) {
@@ -105,7 +104,7 @@ public class HouseController {
         long totalReviewCount = reviewRepository.countByHouse(house);
         
         //お気に入り
-        List<Favorite> favoritePage = favoriteRepository.findByUserOrderByCreatedAtDesc(house);
+        List<Favorite> favoritePage = favoriteRepository.findByUserOrderByCreatedAtDesc(  ,   );
         
         model.addAttribute("house", house);  
         model.addAttribute("reservationInputForm", new ReservationInputForm());
